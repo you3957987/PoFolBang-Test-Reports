@@ -1,73 +1,72 @@
-# Validation — 2026-11-17
+# 초기 Steam 멀티플레이 및 테스트 자동화 검증
 
-> **공개용 편집본:** 비공개 저장소에서 추출한 보고서입니다. 장비 호스트명과 로컬 실행 경로를 익명화했으며, 원본 코드·로그·추가 파일을 가리키는 내부 링크는 공개본에서 비활성화했습니다. 테스트는 Codex를 활용한 자동화 및 기록을 포함합니다.
+> **검증 기간:** 2026년 11월 17~18일  
+> **환경:** Unreal Engine 5.8.4, Windows Development, 서로 다른 Steam 테스트 계정 2개  
+> **문서 유형:** Codex 협업 테스트의 내부 기록을 한국어로 정리한 공개용 보고서. 장비 호스트명과 비공개 실행 경로는 제외했습니다.
 
+이 문서는 **11월 19일 최종 48회 검증보다 앞서 수행한 기본 기능·자동화 환경 검사**입니다. 각 시점의 결과를 서로 합산하지 않았습니다.
 
-Environment: desktop [TEST_DESKTOP], laptop [TEST_LAPTOP], separate logged-in Steam accounts, UE 5.8.4, Development package, Steam App ID 480. Laptop helper runs as the normal interactive user through the existing PoPolBang share.
+## 1. 두 장비 Steam 세션·맵 이동 검증 (11월 17일)
 
-## Two-machine session/map checks
+데스크톱과 노트북에서 각각 게임을 실행하고, PC·노트북을 번갈아 호스트로 지정했습니다.
 
-All six combinations passed with deployed revision `116593ac464d48229b6c8f29acbf0c02`:
+| 모드 | 호스트 | 결과 | 실행 시간 |
+| --- | --- | --- | ---: |
+| 개인전 (FreeForAll) | PC | 통과 | 51.7초 |
+| 개인전 (FreeForAll) | 노트북 | 통과 | 53.0초 |
+| 팀전 (Team) | PC | 통과 | 49.6초 |
+| 팀전 (Team) | 노트북 | 통과 | 50.9초 |
+| 깃발전 (TeamFlag) | PC | 통과 | 48.2초 |
+| 깃발전 (TeamFlag) | 노트북 | 통과 | 51.5초 |
 
-| Mode | Host | Result | Seconds |
-| --- | --- | --- | --- |
-| FreeForAll | PC | Pass | 51.7 |
-| FreeForAll | Laptop | Pass | 53.0 |
-| Team | PC | Pass | 49.6 |
-| Team | Laptop | Pass | 50.9 |
-| TeamFlag | PC | Pass | 48.2 |
-| TeamFlag | Laptop | Pass | 51.5 |
+**6가지 조합 통과.** Steam 세션 생성·검색·참가, 로비에서 선택한 맵으로 이동, 양쪽의 PlayerState·캐릭터·로컬 빙의 상태를 검사했습니다. 각 역할이 정상적으로 유지되는지 **8초간 확인**했습니다.
 
-Evidence under the repository:
+- 기본 테스트 배포본: `116593ac464d48229b6c8f29acbf0c02`
+- 패키징 설정을 바꾼 뒤 노트북 호스트 깃발전 재검증: `059fe8707d16427ea42828803644b293`, **51.5초 통과**
+- 이 기본 세션 테스트만으로 **양쪽 피해량·깃발 득점 복제·UI 클릭·시각적 품질을 검증한 것은 아닙니다.**
 
-- `Saved/TestRuns/20261117-191405-b5bcd0e6/results.json`: FreeForAll, PC host.
-- `Saved/TestRuns/20261117-191528-e2722bc7/results.json`: FreeForAll, laptop host.
-- `Saved/TestRuns/20261117-191633-f4d3c0f2/results.json`: Team and TeamFlag, both hosts.
-- Each case has PC and laptop logs with the same unique run ID and both `PFBTEST PASS` markers.
+## 2. 테스트 도구 및 에디터 점검
 
-After the final versioned full cook and deployment, TeamFlag with the laptop hosting passed again in 51.5 seconds on revision `059fe8707d16427ea42828803644b293`. Evidence: `Saved/TestRuns/20261117-192604-671dab7a/results.json`. The other five cases above were run before this packaging-setting change, with the same test/gameplay implementation.
+| 검사 | 결과 |
+| --- | --- |
+| PowerShell 테스트 도우미 | 파일 잠금·상태 기록·요청 처리 등 **28개 통합 검사 통과** |
+| Gauntlet 연동 | 테스트 클래스 호출 오류 수정 후 `-gauntlet=PFBMultiplayerTest`로 실행 확인 |
+| Unreal MCP | 도구·스키마·테스트 목록 탐색 및 실행 확인 |
+| 에디터 전투 회귀 | **9/9 통과**, 실패·건너뜀 0. 메시·소켓 관련 테스트 경고는 남아 있음 |
 
-Assertions: existing Steam session create/find/join succeeds; normal lobby travels to the selected map; both machines observe two player states, two characters with player states, and their local possessed character for eight seconds in the expected network role. This does not validate damage across machines, flag pickup/capture/score replication, UI clicks, or visual correctness.
+테스트 도우미는 상태 JSON을 원자적으로 갱신하도록 보완했고, 일시적인 파일 잠금 때문에 중단되던 문제를 개선했습니다. 위 에디터 검사와 실제 두 장비의 Steam 전투 결과는 서로 다른 검사입니다.
 
-## Helper and editor checks
+## 3. 빌드 및 진단
 
-- 28 local helper integration checks passed in real Windows PowerShell 5.1, including file-lock recovery, atomic JSON replacement, arguments, current-session/expiry enforcement, process ownership, deployment locks, changed files, obsolete files, and no-op transfers. Evidence: `Saved/LaptopTestValidation/6b228603a7ed4ae4b83d9f8ed2af5830`.
-- Corrected the observed status-write crash: atomic replacement and compatible read sharing replace Move-Item overwrite; transient heartbeat locks no longer terminate the agent. The fixed files were hash-verified on the laptop and exercised throughout the real matrix.
-- Corrected the initial Gauntlet class lookup crash by invoking `-gauntlet=PFBMultiplayerTest`.
-- Unreal MCP initialized on loopback port 8000; toolset discovery, schema discovery, test discovery, and execution worked. `.codex/config.toml` contains the project connection.
-- All 9 existing `MultiShooter.Combat.*` editor regression tests passed, zero failed/skipped. Mesh/socket warnings from test fixtures remain. Evidence: `Saved/SetupArtifacts/combat-results.json`. These are separate from real two-machine combat assertions.
-- The project skill passed `quick_validate.py` validation.
+- **패키징:** 변경된 에디터 플러그인을 포함한 증분 빌드 37.9초, 캐시가 유지된 조건의 빌드 24.1초를 관측했습니다.
+- **전체 쿠킹:** 콘텐츠 버전 플래그를 적용해 **1,492개 패키지**, 약 **38.6초**, 쿠킹 경고·오류 0건을 확인했습니다.
+- **배포:** 변경 패키지 전송 약 **50.0초**, 변경 파일이 없는 재배포 **2.8초**를 기록했습니다.
+- **Unreal Insights:** PC 추적 파일을 분석 도구에서 읽는 것은 확인했지만, 종료 시점의 경고가 남아 있으므로 메모리 안정성 검증 완료로 해석하지 않습니다.
 
-## Build and diagnostics
+이 측정 시간은 장비·캐시·변경 내용에 따라 달라집니다.
 
-- Incremental build measured 37.9 seconds after enabling the editor plugins; a cached run with the versioned-content flag measured 24.1 seconds. Times depend on changed code/assets and cache state.
-- UE reported that legacy iterative cooking with unversioned content can miss C++ serialization changes. The Development build script now uses `-VersionCookedContent`; a one-time full cook rebuilt all 1,492 packages successfully in 38.6 seconds, with zero cook warnings/errors. Evidence: `Saved/Logs/LaptopTest-VersionedFullCook.log`.
-- Live Coding in the agent-started editor initially blocked packaging. The owned editor was closed cleanly before rebuilding. Do not force-close an unrelated editor.
-- The final changed package deployed in 50.0 seconds. An immediately repeated deployment copied no files and completed in 2.8 seconds (robocopy code 2: excluded metadata present). Evidence: `Saved/SetupArtifacts/incremental-publish.json` and `Saved/SetupArtifacts/unchanged-publish.json`. A changed packed container may still require copying the whole container; this is file-level incremental transfer, not binary delta patching.
-- PC/laptop trace files were captured for both FreeForAll host directions. Unreal Insights parsed the PC trace and exited 0 after analysis. Evidence: `Saved/SetupArtifacts/Insights-validation.log`. The diagnostic trace contains incomplete final-frame/memory-profiler warnings after process termination; it is not a clean memory-profiling validation or an assertion of replication correctness.
+## 4. 렌더링 성능 비교 (11월 18일)
 
-Generated evidence is under ignored `Saved/` paths and is local to this checkout. Keep this report's scope distinct from future gameplay tests.
+RTX 4070 Laptop GPU, **1280×720 창 모드, VSync 해제, FPS 제한 없음**으로 측정했습니다. 각 장면에서 20초 워밍업 후 22초의 유효 표본을 사용했습니다.
 
-## 2026-11-18 노트북 성능 측정 및 반복 작업 정리
+| 장면 | 변경 전 평균 프레임 시간 | 변경 후 평균 프레임 시간 |
+| --- | ---: | ---: |
+| 메인 메뉴 | 6.169ms | 6.093ms |
+| 정지 상태의 1인 깃발전 | 6.962ms | 6.990ms |
 
-- RTX 4070 Laptop GPU에서 패키지를 1280×720 창 모드, VSync 해제, FPS 제한 해제로 측정했다. 각 장면은 20초 워밍업 후 22초의 유효 표본을 사용했다. 기본 메인 메뉴와 움직이지 않는 1인 깃발전 장면이다.
-- 수정 전 메뉴 평균 6.169ms / p95 7.213ms, 수정 후 6.093ms / p95 6.904ms였다. 깃발전은 수정 전 6.962ms, 수정 후 6.990ms로 거의 같았다. 정지 장면의 뚜렷한 FPS 개선은 확인되지 않았다. 정확한 수치는 아래 원본 JSON을 따른다.
-- 메뉴의 활성 Niagara는 0개, 깃발전은 1개였다. 깃발전에서 기존의 활성 효과를 잠시 숨기고 멈춘 비교 구간은 약 0.25~0.28ms 빨랐다. 이 표본에서 이펙트가 전체 부하의 주원인이라는 증거는 없다.
-- 메뉴와 클라이언트의 불필요한 지연 보상 기록 Tick을 중지했다. 서버의 경기 중 기록은 유지한다. 파티원 이름표는 내용 변경 시 다시 그리도록 했다. 피격 파티클과 획득 Niagara는 완료 후 자동 반환하는 컴포넌트 풀을 사용한다.
-- 같은 무기 피격 효과를 초당 약 50개 요청하는 비교에서 고유 컴포넌트는 1,070개에서 50개로 감소했다. 평균 프레임은 7.254ms 대 7.307ms로 비슷했다. 프로세스 사용 메모리 표본은 1,446.4MB 대 1,624.4MB로 증가했고, 메모리 절감은 입증하지 않았다. 두 구간은 같은 프로세스에서 순서대로 측정했으므로 메모리 차이를 풀 단독 비용으로 해석하지 않는다.
-- 기준값은 `Saved/TestRuns/Performance-Before-7492bec1d2054ead83e13e53979bfbfd/results.json`, 수정 후 정지 장면은 `Saved/TestRuns/Performance-After-3bfabcb01e314d26912f09bf31dc227f/results.json`, 반복 효과는 `Saved/TestRuns/Performance-After-522893468a65401fb6d2abecfda055b4/TeamFlagGameMap.log`에 있다.
-- 배포 revision `c6a94b02759d4ab79d182d80c185d8fb`의 고핑 이동 표적 피격은 편도 150ms 조건에서 양쪽 피해 10으로 일치했다. `Saved/TestRuns/20261118-100130-92ca9295/results.json`에 기록했다. PC와 노트북 호스트 깃발 획득·득점·복귀는 `Saved/TestRuns/20261118-100243-bd578508/results.json`에서 모두 통과했다. 파티 양방향 외형·닉네임 갱신과 캡처는 `Saved/TestRuns/SteamParty-d07809d674304344876c5818223dfd30/results.json`에서 통과했다.
-- 8인 실제 전투, 장시간 누적 부하, 노트북 기본 해상도에서의 성능은 이 측정에 포함되지 않는다.
+**뚜렷한 프레임 성능 향상은 확인되지 않았습니다.** 동일한 효과를 초당 약 50회 요청하는 별도 비교에서 고유 컴포넌트가 **1,070개 → 50개**로 감소했지만, 평균 프레임 시간은 7.254ms → 7.307ms였고 측정 메모리는 오히려 증가했습니다. 따라서 메모리 절감이나 FPS 개선으로 단정하지 않았습니다.
 
-## 게임플레이 검사 추가
+## 5. 게임플레이·설정 기능 추가 검사 (11월 18일)
 
-### 2026-11-18 설정 확장 편집기 검사
+- **설정 UI:** 여섯 개 설정 탭의 전환, 감도·FOV·음량·조준 방식 등 저장 및 재로드 확인
+- **입력 설정:** Enhanced Input 점프 키 `Space → K` 재지정 확인
+- **그래픽 설정:** 화면 모드 변경 이후 **15초 자동 복구** 확인
+- **기타 회귀:** PC 호스트 깃발 획득·득점·복귀, 권총 명중 시 양쪽의 체력·쉴드 감소 관측
 
-- 패키징 없이 MultiShooterEditor Development를 컴파일하고 편집기의 게임 실행 모드로 검사했다. 실행 창은 오프스크린으로 렌더링했다.
-- 기존 메인 메뉴 설정 버튼으로 6개 탭이 열리고 정상 복귀했다. 감도·FOV·음량·조준 방식·정보 표시 저장 후 파일 재로드, Enhanced Input의 점프 키 Space→K 변경, 15초 화면 변경 자동 복구, 기본값 초기화가 통과했다.
-- 설정값과 화면 모드 검사는 전용 SaveGame 및 GameUserSettings 파일에서 수행했다. 기존 사용자 저장 파일은 시험에 사용하지 않았다. 시험 저장 폴더는 각 결과 폴더의 RuntimeSaved에 보관했다.
-- 최종 결과 및 실제 화면 캡처는 `Saved/TestRuns/PFBSettingsProof-46d6ad233e144570ac69f12aee1d365f/results.json`에 있다. PC·노트북 패키지 실행, 실제 오디오 청취 및 모든 키 조합의 수동 플레이 검사는 이 범위에 포함되지 않는다.
+설정 테스트는 **렌더링된 에디터 실행 환경**을 사용했습니다. 두 장비 패키지에서 모든 설정 조작을 수동으로 검증한 결과는 아닙니다.
 
-- RustDesk 없이 PC와 노트북에서 실행한다. PC는 숨김 창으로 패키징하고 게임은 기본적으로 렌더링 없이 실행한다.
-- PC 호스트 깃발전에서 획득, 득점 1점, 원래 위치로 복귀를 양쪽 로그로 확인했다. 증거는 `Saved/TestRuns/20261117-195303-2e7a67b0/results.json`과 같은 폴더의 PC·노트북 로그에 있다.
-- PC 호스트 일반전에서 조준과 발사를 실행하고 탄약 소모를 검사했다. 피격된 노트북 플레이어의 체력과 실드 합계가 100에서 90으로 감소한 결과를 양쪽 로그에서 확인했다. 증거는 `Saved/TestRuns/20261117-195540-48153d78/results.json`과 같은 폴더의 PC·노트북 로그에 있다.
+## 원본 기록과 공개 범위
+
+기존 실행 기록은 비공개 PoFolBang 저장소의 `Saved/TestRuns/`, `Saved/SetupArtifacts/` 등에 보존되어 있습니다. 공개 문서에서는 장비 식별 정보 및 열리지 않는 내부 링크를 제거했습니다.
+
+11월 19일 최종 배포본의 결과는 [테스트 환경 및 검증 범위](README.md)와 [실행 결과 JSON](Results.json)에서 별도로 확인할 수 있습니다.
