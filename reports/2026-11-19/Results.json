@@ -1,0 +1,948 @@
+{
+  "buildRevision": "3add9910d64147f0aa7d24b77ed67056",
+  "steam": {
+    "passed": 48,
+    "failed": 0,
+    "runs": [
+      {
+        "label": "Items-Host30",
+        "resultPath": "Saved/TestRuns/20261119-212005-a39632aa/results.json",
+        "runId": "PFB_ddbe34c4ea2a486e93b2eb581695e219",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "ItemProof",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 30,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 63.0
+      },
+      {
+        "label": "MovingPistol",
+        "resultPath": "Saved/TestRuns/20261119-212121-3fe504b5/results.json",
+        "runId": "PFB_6cb33233ff54478ead2e8253c10aca7c",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "MovingShot",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 62.8
+      },
+      {
+        "label": "Moving150At60",
+        "resultPath": "Saved/TestRuns/20261119-212236-0ecdbf3c/results.json",
+        "runId": "PFB_7d6ff64009564c8cac503745fd821e00",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "MovingShot",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 60,
+          "hostFPS": 60,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 66.7
+      },
+      {
+        "label": "HighLatencyMovingPistol",
+        "resultPath": "Saved/TestRuns/20261119-212355-1156783d/results.json",
+        "runId": "PFB_9620a288064b4cf99f18c48a5ceafe40",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "MovingShot",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 60,
+          "hostFPS": 60,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 63.9
+      },
+      {
+        "label": "Moving150Repeat2",
+        "resultPath": "Saved/TestRuns/20261119-212512-3e8f8bf0/results.json",
+        "runId": "PFB_294d339348d045e0ba466ed7e00875f9",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "MovingShot",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 58.7
+      },
+      {
+        "label": "Moving150Repeat3",
+        "resultPath": "Saved/TestRuns/20261119-212625-4879a680/results.json",
+        "runId": "PFB_6e42faa66c6d420086905c2c0e9428c9",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "MovingShot",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 61.2
+      },
+      {
+        "label": "Natural-TeamFlag-PC",
+        "resultPath": "Saved/TestRuns/20261119-212739-0a9b1074/results.json",
+        "runId": "PFB_3a55eef9340f4f14a79a05d367e28b6c",
+        "mode": "TeamFlag",
+        "host": "PC",
+        "scenario": "NaturalFlow",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 60,
+          "hostFPS": 60,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 100.4
+      },
+      {
+        "label": "Natural-TeamFlag-Laptop",
+        "resultPath": "Saved/TestRuns/20261119-212927-902c4178/results.json",
+        "runId": "PFB_1376086f79264a939a96c6510bebbb94",
+        "mode": "TeamFlag",
+        "host": "Laptop",
+        "scenario": "NaturalFlow",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 60,
+          "hostFPS": 60,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 103.1
+      },
+      {
+        "label": "Natural-Team-PC",
+        "resultPath": "Saved/TestRuns/20261119-213124-37418a1d/results.json",
+        "runId": "PFB_5d7258119d844bc0955ac4c30cb10be2",
+        "mode": "Team",
+        "host": "PC",
+        "scenario": "NaturalFlow",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 60,
+          "hostFPS": 60,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 100.6
+      },
+      {
+        "label": "Natural-Team-Laptop",
+        "resultPath": "Saved/TestRuns/20261119-213319-5d0c97d7/results.json",
+        "runId": "PFB_4068adb2202c408c9836c3f31d3d1a2a",
+        "mode": "Team",
+        "host": "Laptop",
+        "scenario": "NaturalFlow",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 60,
+          "hostFPS": 60,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 102.3
+      },
+      {
+        "label": "Natural-FreeForAll-PC",
+        "resultPath": "Saved/TestRuns/20261119-213516-3528f08e/results.json",
+        "runId": "PFB_43eff9a9b7094e0da66f236e58a3c658",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "NaturalFlow",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 60,
+          "hostFPS": 60,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 178.0
+      },
+      {
+        "label": "Natural-FreeForAll-Laptop",
+        "resultPath": "Saved/TestRuns/20261119-213828-2028aaf2/results.json",
+        "runId": "PFB_9322587f1b744a69beb4b02f624515cf",
+        "mode": "FreeForAll",
+        "host": "Laptop",
+        "scenario": "NaturalFlow",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 60,
+          "hostFPS": 60,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 182.5
+      },
+      {
+        "label": "FlagWalk180-Laptop",
+        "resultPath": "Saved/TestRuns/20261119-214144-e71184a0/results.json",
+        "runId": "PFB_f390fa52d30e466a8e028e3d31526597",
+        "mode": "TeamFlag",
+        "host": "Laptop",
+        "scenario": "NaturalFlow",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 60,
+          "hostFPS": 60,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 262.1
+      },
+      {
+        "label": "Flag-PC",
+        "resultPath": "Saved/TestRuns/20261119-214619-122a89b4/results.json",
+        "runId": "PFB_aed8713cfece49769ee68767db85020f",
+        "mode": "TeamFlag",
+        "host": "PC",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 54.4
+      },
+      {
+        "label": "EvasionAndPassword-PC",
+        "resultPath": "Saved/TestRuns/20261119-214725-08f64365/results.json",
+        "runId": "PFB_39fd3999817e4be0884ff2c14f3c686d",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "ProfileEvasion",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 60.5
+      },
+      {
+        "label": "Flag-Laptop",
+        "resultPath": "Saved/TestRuns/20261119-214839-47367ada/results.json",
+        "runId": "PFB_380c3a4974b34d05b39c4a29b3262d63",
+        "mode": "TeamFlag",
+        "host": "Laptop",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 62.3
+      },
+      {
+        "label": "EvasionAndPassword-Laptop",
+        "resultPath": "Saved/TestRuns/20261119-214952-cfecb06f/results.json",
+        "runId": "PFB_f905c0e722bb4b33a8a31d632f8621ab",
+        "mode": "FreeForAll",
+        "host": "Laptop",
+        "scenario": "ProfileEvasion",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 64.8
+      },
+      {
+        "label": "LobbyRejoin",
+        "resultPath": "Saved/TestRuns/20261119-215110-3bc6539f/results.json",
+        "runId": "PFB_2657bb533f454e0d8b0c444e3d54cb14",
+        "mode": "Team",
+        "host": "PC",
+        "scenario": "LobbyRejoin",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 60.5
+      },
+      {
+        "label": "FlagRoundResult",
+        "resultPath": "Saved/TestRuns/20261119-215224-93816194/results.json",
+        "runId": "PFB_d9cef201a62441ec872dff6f1bf9e433",
+        "mode": "TeamFlag",
+        "host": "PC",
+        "scenario": "RoundReset",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 56.8
+      },
+      {
+        "label": "Disconnect-Host",
+        "resultPath": "Saved/TestRuns/20261119-215333-ead93e1d/results.json",
+        "runId": "PFB_1189d9ae19e343469a654535928726c1",
+        "mode": "TeamFlag",
+        "host": "PC",
+        "scenario": "DisconnectHost",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 50.4
+      },
+      {
+        "label": "Disconnect-Client",
+        "resultPath": "Saved/TestRuns/20261119-215436-0f23da47/results.json",
+        "runId": "PFB_2c38487ac03044319818ea73fef3e0c3",
+        "mode": "TeamFlag",
+        "host": "PC",
+        "scenario": "DisconnectClient",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 55.6
+      },
+      {
+        "label": "DirectionalRoll",
+        "resultPath": "Saved/TestRuns/20261119-215544-a33e43e5/results.json",
+        "runId": "PFB_3592eb60563a402aa29af850a2e11cbd",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "DirectionalRoll",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 78.3
+      },
+      {
+        "label": "HUD",
+        "resultPath": "Saved/TestRuns/20261119-215714-11edcf79/results.json",
+        "runId": "PFB_03a8626227e840f9a31ae26c199f3e9c",
+        "mode": "Team",
+        "host": "PC",
+        "scenario": "HudProof",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 51.3
+      },
+      {
+        "label": "Trails-Host",
+        "resultPath": "Saved/TestRuns/20261119-215820-13102fae/results.json",
+        "runId": "PFB_01d94d93beac4851b37263ed817304e1",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "TrailProof",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 86.7
+      },
+      {
+        "label": "Trails-Client",
+        "resultPath": "Saved/TestRuns/20261119-215959-f87e7871/results.json",
+        "runId": "PFB_0d487359a37b48818f91816e457ea887",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "TrailProof",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 92.1
+      },
+      {
+        "label": "EliminationHUD",
+        "resultPath": "Saved/TestRuns/20261119-220143-68d7bc18/results.json",
+        "runId": "PFB_bc7dc28485cb45a8a55e41cf8522b5c3",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "EliminationProof",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 64.2
+      },
+      {
+        "label": "Precision-PC",
+        "resultPath": "Saved/TestRuns/20261119-220452-73e9f3a1/results.json",
+        "runId": "PFB_36f5f35215dc489d9c763e804e726602",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "WeaponDamage",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 133.9
+      },
+      {
+        "label": "Precision-Laptop",
+        "resultPath": "Saved/TestRuns/20261119-220719-604b1045/results.json",
+        "runId": "PFB_4db958201b7f45ee9839be82ca1901ca",
+        "mode": "FreeForAll",
+        "host": "Laptop",
+        "scenario": "WeaponDamage",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 135.5
+      },
+      {
+        "label": "Arsenal-PC",
+        "resultPath": "Saved/TestRuns/20261119-220948-b55afd34/results.json",
+        "runId": "PFB_db2071ed049044e5a2a0cd5378377063",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "Arsenal",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 177.1
+      },
+      {
+        "label": "Arsenal-Laptop",
+        "resultPath": "Saved/TestRuns/20261119-221257-a012a426/results.json",
+        "runId": "PFB_716976e52b794deea5f6376ac51dd648",
+        "mode": "FreeForAll",
+        "host": "Laptop",
+        "scenario": "Arsenal",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 182.8
+      },
+      {
+        "label": "Range-PC",
+        "resultPath": "Saved/TestRuns/20261119-221613-fd447353/results.json",
+        "runId": "PFB_59f470a1b9294ea29051172c243360fe",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "RangeTTK",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 258.4
+      },
+      {
+        "label": "Range-Laptop",
+        "resultPath": "Saved/TestRuns/20261119-222043-ef0a5787/results.json",
+        "runId": "PFB_f44bb9cc477547a0824a60673eb71e7b",
+        "mode": "FreeForAll",
+        "host": "Laptop",
+        "scenario": "RangeTTK",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 263.8
+      },
+      {
+        "label": "Items-PC",
+        "resultPath": "Saved/TestRuns/20261119-222519-e4020213/results.json",
+        "runId": "PFB_0ba83e428cf14ea28f92ffc7cdf39598",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "ItemProof",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 59.3
+      },
+      {
+        "label": "Items-Laptop",
+        "resultPath": "Saved/TestRuns/20261119-222632-1dfbab2a/results.json",
+        "runId": "PFB_91e8c148803c4521a22947c223d6e5be",
+        "mode": "FreeForAll",
+        "host": "Laptop",
+        "scenario": "ItemProof",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 56.5
+      },
+      {
+        "label": "Edges-PC",
+        "resultPath": "Saved/TestRuns/20261119-222741-cdfdc116/results.json",
+        "runId": "PFB_e70f3939a73e4691937e7e28484fc846",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "CombatEdges",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 55.9
+      },
+      {
+        "label": "Edges-Laptop",
+        "resultPath": "Saved/TestRuns/20261119-222851-25c3a284/results.json",
+        "runId": "PFB_a95ab35198a54f33b18c850086e8305c",
+        "mode": "FreeForAll",
+        "host": "Laptop",
+        "scenario": "CombatEdges",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 58.6
+      },
+      {
+        "label": "20min-FFA",
+        "resultPath": "Saved/TestRuns/20261119-223004-015f1ff6/results.json",
+        "runId": "PFB_c69311da263e48348673bcd2022435df",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "NaturalFlow",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 60,
+          "hostFPS": 60,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 1265.8
+      },
+      {
+        "label": "Edges-Client30",
+        "resultPath": "Saved/TestRuns/20261119-225122-616622c8/results.json",
+        "runId": "PFB_f89223a87c5148b2817fb5020a46fbad",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "CombatEdges",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 30,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 63.0
+      },
+      {
+        "label": "Evasion-Client30",
+        "resultPath": "Saved/TestRuns/20261119-225238-f9cb13ac/results.json",
+        "runId": "PFB_3946234469ed4740a67283c205062b37",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "ProfileEvasion",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 30,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 49.5
+      },
+      {
+        "label": "baseline",
+        "resultPath": "Saved/TestRuns/20261119-225340-206d5194/results.json",
+        "runId": "PFB_4ccc35a5b477466ab82564699ebe9e48",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "Arsenal",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 67.9
+      },
+      {
+        "label": "host60",
+        "resultPath": "Saved/TestRuns/20261119-225501-873fe4d5/results.json",
+        "runId": "PFB_76f038c54c9a4f22ade637ecd5bfc260",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "Arsenal",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 60,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 69.7
+      },
+      {
+        "label": "client60",
+        "resultPath": "Saved/TestRuns/20261119-225625-dd818d3d/results.json",
+        "runId": "PFB_d133d3a84dcb4eafa0de8871fd22e52b",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "Arsenal",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 60,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 68.8
+      },
+      {
+        "label": "host30",
+        "resultPath": "Saved/TestRuns/20261119-225746-33cee7b5/results.json",
+        "runId": "PFB_70b4eef9759f42f3ae07cd4ea0dd7cb5",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "Arsenal",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 30,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 72.2
+      },
+      {
+        "label": "client30",
+        "resultPath": "Saved/TestRuns/20261119-225912-92fb51c5/results.json",
+        "runId": "PFB_1f9ea769d6d0464fbbdbcab92c6bfdb1",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "Arsenal",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 30,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 68.9
+      },
+      {
+        "label": "tx35",
+        "resultPath": "Saved/TestRuns/20261119-230033-3fe3d43c/results.json",
+        "runId": "PFB_b3ef6bbeedb74e34bae4e6ab6dff1e8e",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "Arsenal",
+        "conditions": {
+          "clientOutgoingLagMs": 35,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 69.1
+      },
+      {
+        "label": "tx100",
+        "resultPath": "Saved/TestRuns/20261119-230154-eee00b82/results.json",
+        "runId": "PFB_883d8058d0cd4b45ae856bae7fc4b8fa",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "Arsenal",
+        "conditions": {
+          "clientOutgoingLagMs": 100,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 66.6
+      },
+      {
+        "label": "loss2",
+        "resultPath": "Saved/TestRuns/20261119-230313-afb13e08/results.json",
+        "runId": "PFB_89074aebd005465eb63b6626171ecdfa",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "Arsenal",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 0,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 2
+        },
+        "passed": true,
+        "seconds": 69.4
+      },
+      {
+        "label": "jitter25",
+        "resultPath": "Saved/TestRuns/20261119-230435-4728f5dd/results.json",
+        "runId": "PFB_a78a2e6ec0574086931763f93733bdad",
+        "mode": "FreeForAll",
+        "host": "PC",
+        "scenario": "Arsenal",
+        "conditions": {
+          "clientOutgoingLagMs": 0,
+          "clientOutgoingJitterMs": 25,
+          "clientFPS": 0,
+          "hostFPS": 0,
+          "clientOutgoingLossPercent": 0
+        },
+        "passed": true,
+        "seconds": 58.2
+      }
+    ]
+  },
+  "editor": {
+    "resultPath": "Saved/TestRuns/TrainingRange/MPBaselineFinalF/Report/index.json",
+    "sourceSha256": "6312a017c6fa57db31ab3ee8f63f2cdbd606349a91ed1163e50f311d98c269c5",
+    "succeeded": 0,
+    "succeededWithWarnings": 19,
+    "failed": 0,
+    "notRun": 0,
+    "inProcess": 0,
+    "tests": [
+      {
+        "fullTestPath": "MultiShooter.Combat.ActionRecoveryWithoutHUD",
+        "state": "Success",
+        "warnings": 5,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.AimIgnoresShooterAndAttachedWeapon",
+        "state": "Success",
+        "warnings": 51,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.AimingBlocksWeaponSwap",
+        "state": "Success",
+        "warnings": 52,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.AuthorityActionBoundaries",
+        "state": "Success",
+        "warnings": 102,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.FlyingRoundsDoNotPullAim",
+        "state": "Success",
+        "warnings": 51,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.FreshAimAndReleasedInput",
+        "state": "Success",
+        "warnings": 51,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.InFlightProjectileKeepsDamageAfterSwap",
+        "state": "Success",
+        "warnings": 430,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.PickupAndBuffBoundaries",
+        "state": "Success",
+        "warnings": 210,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.PistolRecoilTrailOrigin",
+        "state": "Success",
+        "warnings": 5,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.ProjectileBlueprintConsistency",
+        "state": "Success",
+        "warnings": 51,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.RapidWeaponTrails",
+        "state": "Success",
+        "warnings": 51,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.RejectsMissingHistoryAndWalls",
+        "state": "Success",
+        "warnings": 686,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.RespawnPlacement",
+        "state": "Success",
+        "warnings": 157,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.RewindRestoresLiveCollision",
+        "state": "Success",
+        "warnings": 592,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.ShotgunOnePelletOneVictim",
+        "state": "Success",
+        "warnings": 569,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.ShotgunSplitTargetsAndPartialCover",
+        "state": "Success",
+        "warnings": 1221,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.TeamDamageAndScoring",
+        "state": "Success",
+        "warnings": 105,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.WeaponBlueprintDamage",
+        "state": "Success",
+        "warnings": 562,
+        "errors": 0
+      },
+      {
+        "fullTestPath": "MultiShooter.Combat.WeaponRecoilMatrix",
+        "state": "Success",
+        "warnings": 45,
+        "errors": 0
+      }
+    ]
+  }
+}
