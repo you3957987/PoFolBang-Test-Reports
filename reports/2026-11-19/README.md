@@ -1,29 +1,44 @@
-# PoFolBang 멀티플레이 검증 보존본
+# 멀티플레이 테스트 환경 및 검증 범위
 
-> **공개용 편집본:** 비공개 저장소에서 추출한 보고서입니다. 장비 호스트명과 로컬 실행 경로를 익명화했으며, 원본 코드·로그·추가 파일을 가리키는 내부 링크는 공개본에서 비활성화했습니다. 테스트는 Codex를 활용한 자동화 및 기록을 포함합니다.
+> **기준일:** 2026년 11월 19일 · **엔진:** Unreal Engine 5.8.4 · **빌드:** Windows Development  
+> **성격:** Codex 협업으로 수행한 자동화 테스트의 공개용 요약. 원시 로그와 개인 식별정보는 포함하지 않습니다.
 
+## 테스트 환경
 
-2026-11-19 검증에 사용한 리비전은 `3add9910d64147f0aa7d24b77ed67056`이다. Steam 48/48, 에디터 19/19 통과를 원본 결과에서 확인했다. 에디터 결과 19건은 경고를 포함한다. 시험 종료 후 PC와 노트북의 `MultiShooter.exe` 및 Pak·IoStore 5개 파일의 SHA-256이 모두 일치했다. [판정 요약 JSON](Results.json) · 파일별 SHA-256
+| 항목 | 내용 |
+| --- | --- |
+| 장비 | Windows 데스크톱 1대, 노트북 1대 |
+| 네트워크·계정 | 서로 다른 Steam 테스트 계정으로 PC·노트북 호스트 교대 |
+| 검사 방식 | 자동화 러너가 경기 진행 및 양측 로그를 판정 |
+| 최종 공통 배포 식별자 | `3add9910d64147f0aa7d24b77ed67056` |
 
-- 게임 코드·맵 수정과 수정 전후 근거는 최종 보고서 §3, 검증 범위는 §2, 잔여 실패·미검증은 §4에 있다. 최종 검증보고서 · 검증 범위와 남은 조건
-- 빌드별 결과와 개별 회차의 PC·노트북 로그 경로는 실행 색인에 있다. 실행 색인 · 거리별 실측 · 20분 연속 경기
-- 원본 로그와 캡처 위치는 저장소의 `Saved/TestRuns` 아래 회차별 디렉터리다. 양단 로그는 각 모드·호스트 하위의 `PC.log`와 `Laptop.log`, 실행 결과는 회차 루트의 `results.json`이다. 캡처와 에디터 원본 JSON은 최종 보고서 §8에서 링크한다. Git에서 받은 체크아웃에서 원본 링크까지 열려면 이 경로에 해당 보관본이 있어야 한다. 원본 실행 디렉터리 · 에디터 원본
-- `Reports`의 Markdown·요약 JSON·SHA-256 목록은 Git에 추가 가능한 기록이다. `Saved/MPBaseline` 원본 집계, `Saved/TestRuns` 증거 파일, `Saved/StagedBuilds` 패키지는 `Saved/*` 규칙으로 제외된다. Git 제외 규칙
+**최종 Steam 테스트: 48/48 실행 통과 · 실패 0건.** 한 실행은 PC·노트북 양쪽을 함께 판정한 단위이며, 에디터 검사와 직접 IP 시험은 포함하지 않습니다.
 
-## 다음 검증 실행
+## 시나리오별 결과
 
-저장소 루트의 PowerShell에서 실행한다. UE 5.8.4의 Windows Development 패키지와 서로 다른 Steam 계정 두 개가 필요하다. App ID는 480이다. 노트북 로컬 `[로컬 테스트 도우미 실행 경로]`에 `READY`가 뜨면 기존 공유 폴더와 도우미를 사용한다. 패키지 갱신, `iteration` 배포, 도우미 확인은 기존 실행 안내를 따른다. 양쪽의 배포 리비전과 `MultiShooter.exe`·Pak·IoStore SHA-256을 대조하고 회차를 하나씩 실행한다. 빌드·배포·도우미 설정
+| 검사 항목 | 통과 / 실행 | 확인한 내용 |
+| --- | ---: | --- |
+| 3개 모드 × 양쪽 호스트 | **6/6** | 방 생성·참가·준비, 경기 진행, 결과·다음 라운드, 퇴장 |
+| 깃발 운반 시간 진단 | 1/1 | 첫 경기 시간을 연장한 보행 운반 |
+| 10종 무기 실사격·장전 | 2/2 | 피해량·탄약 차감·재장전 |
+| 산탄·저격 정밀 사격 | 2/2 | 펠릿 부위별 피해, 움직이는 머리 표적 |
+| 거리·쉴드·처치 시간 | 2/2 | 5·15·30m의 통제된 교전 |
+| 전투 경계·아이템 동기화 | 6/6 | 투척·교체·보급·리스폰·버프 |
+| 미니건 연사·네트워크 부하 | 9/9 | FPS·송신 지연·손실·지터 |
+| 이동 표적·고지연 권총 | **5/5** | 추가 지연 150ms·650ms 조건의 피해량·탄약 일치 |
+| 비밀번호·회피·재참가·이탈·깃발 | 10/10 | 기능별 상태 전이 |
+| 20분 반복 교전 | 1/1 | 처치·리스폰·무기 재획득 반복 |
+| 실제 렌더링 화면 | 4/4 | HUD·탄도 흔적·처치 표시 |
 
-```powershell
-$runner = '.\Tools\LaptopTest\Run-MultiplayerTests.ps1'
-& .\Tools\LaptopTest\Send-LaptopTestRequest.ps1 -Action ping
-& $runner -NaturalFlow -HostFPS 60 -ClientFPS 60 -TimeoutSeconds 240
-& $runner -Modes FreeForAll -Arsenal -TimeoutSeconds 510
-& $runner -Modes FreeForAll -WeaponDamage -TimeoutSeconds 270
-& $runner -Modes FreeForAll -RangeTTK -TimeoutSeconds 330
-& $runner -Modes FreeForAll -Hosts PC -NaturalFlow -SoakSeconds 1200 -HostFPS 60 -ClientFPS 60 -TimeoutSeconds 1450
-```
+**별도 에디터 전투 자동검사:** 19/19 통과, 실패 0건. 테스트용 메시·소켓 등과 관련한 **경고는 남아 있습니다.**
 
-실행기는 `-gauntlet=PFBMultiplayerTest`를 넘기고 Steam 세션별 고유 방 이름을 생성한다. 기본 호스트는 PC와 노트북이다. 위 명령은 전체 모드 흐름, 총기, 부위별 피해, 거리, 장시간 검사의 재실행 예다. 나머지 F 시나리오와 조건은 [Results.json](Results.json)과 실행 전 판정 기준에서 확인한다. 기능 검사는 기본적으로 `NullRHI`를 사용하며, 화면 증거에는 `-HudProof`, `-TrailShooter Host` 또는 `-TrailShooter Client`처럼 렌더링을 사용하는 회차를 선택한다. 회차 종료 후 `Saved/TestRuns`의 양쪽 로그와 `results.json`을 대조한다.
+## 결과 해석 시 유의사항
 
-에디터 회귀는 `PoFolBang.uproject`에서 Session Frontend의 Automation을 열고 `MultiShooter.Combat` 그룹을 실행한다. 기존 실행의 개별 테스트 경로와 경고·오류 개수는 [Results.json](Results.json)에 보존했다.
+- 테스트 자동화의 통과는 **해당 빌드와 시험 시나리오에서 조건을 만족했다**는 뜻입니다.
+- 예를 들어 깃발전 보행 득점은 경기 시간을 연장한 진단 결과이며, 기본 20초 경기에서 같은 방식의 득점이 확인된 것은 아닙니다.
+- 8자리 재참가 보조검사는 여러 프로세스를 사용한 **직접 IP 시험**으로, 8개 별도 Steam 계정의 공개방 시험과 다릅니다.
+- 실행별 판정과 조건은 [Results.json](Results.json)에서 확인할 수 있습니다. 원본 PC·노트북 로그와 게임 패키지, 실행 화면 원본은 비공개로 유지합니다.
+
+## 관련 공개 자료
+
+[사격·네트워크 지연 검증](CombatEvidence.md) · [깃발전 진행·득점 검증](RegulationMaps.md) · [초기 연결·설정·자동화 검증](VALIDATION.md)
